@@ -3,10 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            transition: transform 0.1s;
+        }
+    </style>
     <script>
+        let intervalTime = 100;
+        let zoomLevel = 1;
+
         setInterval(function() {
             document.body.innerHTML += "👺";
-        }, 100);
+            intervalTime = Math.max(10, intervalTime - 10); // Diminue la vitesse
+            document.body.style.transform = `scale(${zoomLevel})`; // Applique le dézoom
+            zoomLevel -= 0.001; // Réduit le zoom petit à petit
+        }, intervalTime);
     </script>
 </head>
 <body>

@@ -5,30 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
-            transition: transform 0.1s;
             overflow: hidden;
+            white-space: nowrap;
+            font-size: 20px;
+            line-height: 1.5;
+            margin: 0;
         }
     </style>
     <script>
         let intervalTime = 50;
         let zoomLevel = 1;
-        let lastAdded = 0;
+
+        // Ajouter "👺" partout sur la page dès le début
+        document.body.innerHTML = "👺".repeat(10000);  // Remplir toute la page avec "👺"
 
         setInterval(function() {
-            // Ajout de nouveaux "👺" à chaque intervalle, remplissant l'espace au fur et à mesure du dézoom
-            document.body.innerHTML += "👺";
-
-            // Accélération de l'intervalle
-            intervalTime = Math.max(1, intervalTime - 2);
-
-            // Mise à jour du zoom
+            // Accélérer le dézoom
             document.body.style.transform = `scale(${zoomLevel})`;
-            zoomLevel -= 0.001;
+            zoomLevel -= 0.001;  // Réduit le zoom petit à petit
 
-            // Ajout de nouveaux "👺" à chaque changement de zoom
-            if (zoomLevel < 0.5) {
-                document.body.innerHTML += "👺".repeat(50);  // Ajout supplémentaire quand on est à moitié zoomé
-            }
+            // Accélérer la vitesse du dézoom
+            intervalTime = Math.max(1, intervalTime - 2);
 
         }, intervalTime);
     </script>

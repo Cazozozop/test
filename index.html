@@ -10,14 +10,26 @@
         }
     </style>
     <script>
-        let intervalTime = 100;
+        let intervalTime = 50;
         let zoomLevel = 1;
+        let lastAdded = 0;
 
         setInterval(function() {
+            // Ajout de nouveaux "👺" à chaque intervalle, remplissant l'espace au fur et à mesure du dézoom
             document.body.innerHTML += "👺";
-            intervalTime = Math.max(10, intervalTime - 5); // Accélère de plus en plus
-            document.body.style.transform = `scale(${zoomLevel})`; // Applique le dézoom
-            zoomLevel -= 0.001; // Réduit le zoom petit à petit
+
+            // Accélération de l'intervalle
+            intervalTime = Math.max(1, intervalTime - 2);
+
+            // Mise à jour du zoom
+            document.body.style.transform = `scale(${zoomLevel})`;
+            zoomLevel -= 0.001;
+
+            // Ajout de nouveaux "👺" à chaque changement de zoom
+            if (zoomLevel < 0.5) {
+                document.body.innerHTML += "👺".repeat(50);  // Ajout supplémentaire quand on est à moitié zoomé
+            }
+
         }, intervalTime);
     </script>
 </head>

@@ -16,16 +16,16 @@
         let intervalTime = 50;
         let zoomLevel = 1;
 
-        // Ajouter "👺" partout sur la page dès le début
+        // Remplir la page avec "👺" dès le départ
         document.body.innerHTML = "👺".repeat(10000);  // Remplir toute la page avec "👺"
 
+        // Appliquer le dézoom de manière accélérée
         setInterval(function() {
-            // Accélérer le dézoom
-            document.body.style.transform = `scale(${zoomLevel})`;
-            zoomLevel -= 0.001;  // Réduit le zoom petit à petit
+            document.body.style.transform = `scale(${zoomLevel})`; // Applique le dézoom
+            zoomLevel -= 0.002; // Réduit le zoom petit à petit
 
             // Accélérer la vitesse du dézoom
-            intervalTime = Math.max(1, intervalTime - 2);
+            intervalTime = Math.max(1, intervalTime - 2); // Réduit l'intervalle pour accélérer
 
         }, intervalTime);
     </script>

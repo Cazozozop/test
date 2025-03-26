@@ -14,7 +14,7 @@
 
         setInterval(function() {
             document.body.innerHTML += "👺";
-            intervalTime = Math.max(10, intervalTime - 10); // Diminue la vitesse
+            intervalTime = Math.max(10, intervalTime - 5); // Accélère de plus en plus
             document.body.style.transform = `scale(${zoomLevel})`; // Applique le dézoom
             zoomLevel -= 0.001; // Réduit le zoom petit à petit
         }, intervalTime);
